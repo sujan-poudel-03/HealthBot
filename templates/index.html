@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a5d148b015.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 50px;
+            font-family: sans-serif;
+            align-items: center;
+        }
+        body{
+            border-style: outset;
+        }
+        h1{
+            padding: 50px;
+            color: green;
+            font-style: bold;
+        }
+        h1::after {
+            line-height: 2px;
+        }
+        #InputText{
+            border-radius: 5px;
+            background-color: antiquewhite;
+            color: black;
+            border-color: azure;
+            width: 400px;
+            height: 50px;
+        }
+        li {
+            list-style-type: none;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function EnableDisable(InputText) {
+            // Reference the Button
+            var btnSubmit = document.getElementById('btnSubmit');
+            // Verify the Textboxvalue
+            if (InputText.value.trim() != "") {
+                // Enable the submit button when textbox has value
+                btnSubmit.disabled = false; 
+            } else {
+                // Disabled the Textbox when textbox is empty
+                btnSubmit.disabled = true;
+            }
+        };
+    </script>
+    <title>Chatbot</title>
+</head>
+<body class="">
+    <div class="card  bg-black font-monospace">
+        <div class="card-header text-white fw-bolder">
+          <h1><b>HEALTHBOT</b></h1>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-white fw-bold">Chat Screen</h5>
+            {% if messages != None %}
+                <div class="d-flex justify-content-end text-white">
+                    {{messages}} <i class="fa-solid fa-user"></i>
+                </div>
+            {% else %}
+            {% endif %} 
+            {% if output != None %}
+                <div class="d-flex justify-content-start text-white">
+                    <i class="fa-solid fa-user"></i>{{output}}
+                </div>        
+            {% else %}
+            {% endif %}
+          <form action="" method="POST" id=""post>
+            {% csrf_token %}
+            <input type="text" name="textinput" id="InputText" onkeyup="EnableDisable(this)"/>
+            <button type="submit" class="btn btn-success" id="btnSubmit" disabled="disabled">Submit</button>
+        </form>
+        </div>
+      </div>
+    <!-- <div class="overflow-auto">
+         
+    
+            
+    </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
